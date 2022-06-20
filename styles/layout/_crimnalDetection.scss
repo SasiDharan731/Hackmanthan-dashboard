@@ -1,0 +1,26 @@
+.dropbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+   
+    border: 2px dashed #3373d3;
+    border-radius: 10px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video{
+    height: 340px;
+}
+
+.center-clm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
