@@ -18,7 +18,7 @@ function Cameras() {
             <Col>
                 <Card body>
 
-                    <img style={{width: "100%"}} src="http://172.20.10.7:5001/video_feed" alt="" srcset="" />
+                    <img style={{width: "100%"}} src="http://172.20.10.7:5001/video_feed" alt="" />
                     
                     <div className="mt-4">
                         <CardTitle tag="h5">CAM 01</CardTitle>
@@ -35,7 +35,7 @@ function Cameras() {
             <Col>
                 <Card body>
 
-                    <img style={{width: "100%"}} src="http://172.20.10.7:5001/video_feed" alt="" srcset="" />
+                    <img style={{width: "100%"}} src="http://172.20.10.7:5001/video_feed" alt="" />
                     
                     <div className="mt-4">
                         <CardTitle tag="h5">CAM 02</CardTitle>
@@ -51,7 +51,7 @@ function Cameras() {
             <Col>
                 <Card body>
 
-                    <img style={{width: "100%"}} src="http://172.20.10.7:5001/video_feed" alt="" srcset="" />
+                    <img style={{width: "100%"}} src="http://172.20.10.7:5001/video_feed" alt="" />
                     
                     <div className="mt-4">
                         <CardTitle tag="h5">CAM 03</CardTitle>

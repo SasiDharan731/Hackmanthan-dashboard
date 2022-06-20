@@ -208,7 +208,7 @@ function CriminalDetection() {
                                 loading ?
                                 <div className="center-clm">
                                     <Spinner style={{ width: '2rem', height: '2rem' }}
-                                    children={false} />
+                                    />
                                     <h5 className='mt-3'>Matching this person</h5>
                                 </div>
                                 :

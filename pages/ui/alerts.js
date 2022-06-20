@@ -41,7 +41,7 @@ const Alerts = () => {
       <Card>
         <CardTitle tag="h6" className="border-bottom p-3 mb-0">
           <i className="bi bi-bell me-2"> </i>
-          Today's Alerts
+          Today Alerts
         </CardTitle>
         <CardBody className="">
         <ListGroup flush>

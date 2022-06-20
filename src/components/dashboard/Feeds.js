@@ -39,7 +39,7 @@ const Feeds = () => {
       <CardBody>
         <CardTitle tag="h5">Feeds</CardTitle>
         <CardSubtitle className="mb-2 text-muted" tag="h6">
-          Today's alerts
+          Today alerts
         </CardSubtitle>
         <ListGroup flush className="mt-4">
           {FeedData.map((feed) => (
