@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import { StyledDropZone } from 'react-drop-zone'
+import React, {useState, useEffect} from 'react'
+
 import 'react-drop-zone/dist/styles.css'
 import {
     Button, Modal, Spinner,

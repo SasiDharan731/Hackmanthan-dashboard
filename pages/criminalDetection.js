@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
-import { StyledDropZone } from 'react-drop-zone'
+import React, {useState, useEffect} from 'react'
+import {useDropzone} from 'react-dropzone';
 import 'react-drop-zone/dist/styles.css'
+
 import {
     Button, Modal, Spinner,
     ModalHeader, ModalBody,
@@ -35,6 +36,14 @@ const tableData = [
 },
 ];
 function CriminalDetection() {
+
+    const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
+  
+    const files = acceptedFiles.map(file => (
+      <li key={file.path}>
+        {file.path} - {file.size} bytes
+      </li>
+    ));
   
     // Test video loaded toggle 
    const [selectTestVideo, setTestVideo] = useState(false)
@@ -57,34 +66,43 @@ function CriminalDetection() {
    // Person found frame
    const [foundFrame, setFoundFrame] = useState(null)
 
-
-//    const getFrameDataFromVideo = () => {
+   
+   
+   //    const getFrameDataFromVideo = () => {
 //     console.log("Uploading");
 //     const url = 'http://172.20.10.10:9775/uploadVideoFile';
 //     // const formData = new FormData();
 //     // formData.append('videoFile', Videofile);
 //     // formData.append('fileName', Videofile.name);
 //     // const config = {
-//     //   headers: {
-//     //     'content-type': 'multipart/form-data',
-//     //   },
-//     // };
-//     const formData = {
-//         videoFile : "Hello",
+    //     //   headers: {
+        //     //     'content-type': 'multipart/form-data',
+        //     //   },
+        //     // };
+        //     const formData = {
+            //         videoFile : "Hello",
 //     }
 //     axios.get(url).then((response) => {
-//       console.log(response.data);
-//     //   frameDetails(response.data.frame)
-//     });
-//   }
+    //       console.log(response.data);
+    //     //   frameDetails(response.data.frame)
+    //     });
+    //   }
 
     // const getFrameDataFromVideo = () => {
     //     axios.post("https://7belszqiph.execute-api.ap-south-1.amazonaws.com/test/faceDetection", {
-    //         faces : "Hello",
-    //     }).then((data) => {
-    //         console.log(data.data);
-    //     })
-    // }
+        //         faces : "Hello",
+        //     }).then((data) => {
+            //         console.log(data.data);
+            //     })
+            // }
+            
+            // Browser Loaded
+            const [bLoaded, setBLoaded] = useState(false)
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            setBLoaded(true)
+          }
+    }, [])
 
 
     const getFrameDataFromVideo = (id) => {
@@ -121,7 +139,16 @@ function CriminalDetection() {
                     <b>Upload the footage here</b>
                 </h2>
             </div>
-            <StyledDropZone onDrop={(file, text) => console.log(file, text)}/>
+           
+            <section className="dropbox">
+      <div {...getRootProps({className: 'dropzone'})}>
+        <input {...getInputProps()} />
+        <p className='p-5 text'>Drag and drop footage here, or click to select files</p>
+      </div>
+     
+    </section>
+
+
             <div className="mt-5 center">           
                 <Button color='primary' size='lg' href="/">Match in live feed</Button>
             </div>

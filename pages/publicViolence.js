@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import { StyledDropZone } from 'react-drop-zone'
+import React, {useState, useEffect} from 'react'
+import {useDropzone} from 'react-dropzone';
 import 'react-drop-zone/dist/styles.css'
 import {
     Button, Modal, Spinner,
@@ -11,7 +11,13 @@ import { Card, CardBody, CardTitle, CardSubtitle, Table} from "reactstrap";
 
 
 function PublicViolence() {
+    const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
   
+    const files = acceptedFiles.map(file => (
+      <li key={file.path}>
+        {file.path} - {file.size} bytes
+      </li>
+    ));
     // Test video loaded toggle 
    const [selectTestVideo, setTestVideo] = useState(false)
 
@@ -34,6 +40,14 @@ function PublicViolence() {
      // Accident found frame
    const [foundFrame, setFoundFrame] = useState(null)
 
+               // Browser Loaded
+               const [bLoaded, setBLoaded] = useState(false)
+               useEffect(() => {
+                   if (typeof window !== "undefined") {
+                       setBLoaded(true)
+                     }
+               }, [])
+
    const getFrameDataFromVideo = (id) => {
     
      setTimeout(() => {
@@ -52,7 +66,15 @@ function PublicViolence() {
                     <b>Upload the footage here</b>
                 </h2>
             </div>
-            <StyledDropZone onDrop={(file, text) => console.log(file, text)}/>
+         
+            <section className="dropbox">
+      <div {...getRootProps({className: 'dropzone'})}>
+        <input {...getInputProps()} />
+        <p className='p-5 text'>Drag and drop footage here, or click to select files</p>
+      </div>
+     
+    </section>
+
           
             <div className="mt-5">
                 <h2 className='text-danger'>Ready made footages (For test mode only)</h2>
